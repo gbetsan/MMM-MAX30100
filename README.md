@@ -1,4 +1,4 @@
-# MMM-DHT22
+# MMM-MAX30100
 Additional Module for MagicMirror²  https://github.com/MichMich/MagicMirror
 
 ## Dependencies
@@ -14,12 +14,12 @@ cd ~/MagicMirror/modules
 
 Clone this repository:
 ```
-git clone https://github.com/Bangee44/MMM-DHT22
+git clone https://github.com/Bangee44/MMM-MAX30100
 ```
 
-Navigate to the new `MMM-DHT22` folder and make dht_var executable.
+Navigate to the new `MMM-MAX30100` folder and make dht_var executable.
 ```
-cd MMM-DHT22
+cd MMM-MAX30100
 chmod 755 dht_var
 ```
 
@@ -37,7 +37,7 @@ To use this module, add it to the modules array in the `config/config.js` file:
 ```javascript
 modules: [
   {
-    module: 'MMM-DHT22',
+    module: 'MMM-MAX30100',
     position: 'top_right',
     config: {
         sensorPIN: 2,

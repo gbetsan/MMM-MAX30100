@@ -5,14 +5,14 @@
  *
  * By Benjamin Angst 
  * MIT Licensed.
- */
+*/
 
 const NodeHelper = require('node_helper');
 const exec = require('child_process').exec;
 
 module.exports = NodeHelper.create({
 		 start: function () {
-			 console.log('Temperatur helper started ...');
+			 console.log('Heart rate helper started ...');
 		 },
 		 
 		 // Subclass socketNotificationReceived received.
@@ -23,15 +23,16 @@ module.exports = NodeHelper.create({
 			   this.config = payload
 			   
 			   // execute external DHT Script
-			   exec("sudo ./modules/MMM-DHT22/dht_var " + this.config.sensorPIN, (error, stdout) => {
+			   exec("sudo python ./modules/MMM-MAX30100/read_sensor.py " + this.config.sensorPIN, (error, stdout) => {
 			   if (error) {
 				    console.error(`exec error: ${error}`);
 				    return;
 				  }
 			   	  var arr = stdout.split(",");
-			   	  
-				  //console.log("Log: " + temp + " - " + hum);
-				  // Send Temperatur
+					 
+			   	  console.log(stdout);
+				  console.log("Log: " + temp + " - " + hum);
+				  // Send Temperature
 		          self.sendSocketNotification('DATA',{
 						temp: arr[1],
 						humidity: arr[0]

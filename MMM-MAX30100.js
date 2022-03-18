@@ -1,5 +1,4 @@
-
-Module.register("MMM-DHT22",{
+Module.register("MMM-MAX30100",{
     // Default module config.
     defaults: {
     	sensorPIN: 2,
