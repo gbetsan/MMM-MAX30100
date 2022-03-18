@@ -1,0 +1,3 @@
+[submodule "lib/max30100"]
+	path = lib/max30100
+	url = https://github.com/mfitzp/max30100
