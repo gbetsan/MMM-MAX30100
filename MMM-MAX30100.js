@@ -36,7 +36,7 @@ Module.register("MMM-MAX30100",{
 		}
     	
 		var temp = document.createElement("div");
-        temp.innerHTML = "" + this.bpm + " bpm";
+        temp.innerHTML = "" + round(this.bpm) + " bpm";
         wrapper.appendChild(temp);
         
         return wrapper;
