@@ -6,7 +6,7 @@ sys.path.append(os.path.abspath("lib/max30100"))
 import max30100
 import time
 import threading
-from MCP3008 import MCP3008
+# from MCP3008 import MCP3008
 
 class Pulsesensor:
     def __init__(self, adc):
@@ -107,22 +107,23 @@ class Pulsesensor:
 
 mx30 = max30100.MAX30100(i2c=smbus.SMBus(1))
 mx30.read_sensor()
-print(mx30.ir, mx30.red)
+# print(mx30.ir, mx30.red)
 
-p = Pulsesensor(mx30)
-p.startAsyncBPM()
+# p = Pulsesensor(mx30)
+# p.startAsyncBPM()
 
-try:
-    while True:
-        bpm = p.BPM
-        if bpm > 0:
-            print("BPM: %d" % bpm)
-        else:
-            print("No Heartbeat found")
-        time.sleep(1)
-except:
-    p.stopAsyncBPM()
-# while True:
-#      time.sleep(0.01)
-#      mx30.read_sensor()
-#      print(mx30.buffer_ir[-1000:])
+# try:
+#     while True:
+#         bpm = p.BPM
+#         if bpm > 0:
+#             print("BPM: %d" % bpm)
+#         else:
+#             print("No Heartbeat found")
+#         time.sleep(1)
+# except:
+#     p.stopAsyncBPM()
+
+for x in range(0, 10):
+     time.sleep(0.01)
+     mx30.read_sensor()
+     print(mx30.ir)

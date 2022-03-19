@@ -28,14 +28,12 @@ module.exports = NodeHelper.create({
 				    console.error(`exec error: ${error}`);
 				    return;
 				  }
-			   	  var arr = stdout.split(",");
-					 
-			   	  console.log(stdout);
-				  console.log("Log: " + temp + " - " + hum);
-				  // Send Temperature
+			   	  // var arr = stdout.split(",");
+
+				  console.log("Log: " + stdout);
+				  // Send BPM
 		          self.sendSocketNotification('DATA',{
-						temp: arr[1],
-						humidity: arr[0]
+						bpm: parseInt(stdout)
 				  });
 			 });
 		   }

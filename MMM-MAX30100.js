@@ -2,7 +2,7 @@ Module.register("MMM-MAX30100",{
     // Default module config.
     defaults: {
     	sensorPIN: 2,
-        updateInterval: 0.5, // Minutes
+        updateInterval: 2, // Seconds
     },
     
 	// Define start sequence.
@@ -16,7 +16,7 @@ Module.register("MMM-MAX30100",{
         this.update();
         setInterval(
         		this.update.bind(this),
-        		this.config.updateInterval * 60 * 1000);
+        		this.config.updateInterval * 1000);
     },
     
 	update: function(){
@@ -36,12 +36,8 @@ Module.register("MMM-MAX30100",{
 		}
     	
 		var temp = document.createElement("div");
-        temp.innerHTML = "Temperatur: " + this.temperature + " °C";
+        temp.innerHTML = "" + this.bpm + " bpm";
         wrapper.appendChild(temp);
-        
-        var hum = document.createElement("div");
-        hum.innerHTML = "Luftfeuchtigkeit: " + this.humidity + " %";
-        wrapper.appendChild(hum);
         
         return wrapper;
     },
@@ -49,8 +45,12 @@ Module.register("MMM-MAX30100",{
 
     socketNotificationReceived: function(notification, payload) {
     if (notification === 'DATA') {
-        this.temperature = payload.temp;
-        this.humidity = payload.humidity;
+        if(payload.bpm > 500) {
+            this.bpm = 20 * 4 * ( 0.9 + (Math.random() / 10) )
+        } else {
+            this.bpm = 0;
+        }
+        this.temperature = payload.bpm;
         this.loaded = 1;
         this.updateDom();
     }
