@@ -46,7 +46,7 @@ Module.register("MMM-MAX30100",{
         console.log(notification)
         if (notification === 'DATA') {
             console.log("UPDATE DOM")
-            if(payload.bpm > 500) {
+            if(payload.bpm > 1000) {
                 this.bpm = 20 * 4 * ( 0.9 + (Math.random() / 10) )
             } else {
                 this.bpm = 0;
