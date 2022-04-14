@@ -27,13 +27,14 @@ module.exports = NodeHelper.create({
 			   if (error) {
 				    console.error(`exec error: ${error}`);
 				    return;
-				  }
+				}
 			   	  // var arr = stdout.split(",");
 
-				  console.log("Log: " + stdout);
+				  console.log("Log: " + parseInt(stdout));
 				  // Send BPM
-		          self.sendSocketNotification('DATA',{
-						bpm: parseInt(stdout)
+		          self.sendSocketNotification('DATA', {
+						bpm: parseInt(stdout),
+						temp: 100
 				  });
 			 });
 		   }

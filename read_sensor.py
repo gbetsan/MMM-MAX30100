@@ -2,7 +2,7 @@ import sys
 import os
 import smbus
 import time
-sys.path.append(os.path.abspath("lib/max30100"))
+sys.path.append(os.path.abspath("/home/pi/MagicMirror/modules/MMM-MAX30100/lib/max30100/"))
 import max30100
 import time
 import threading
@@ -126,4 +126,5 @@ mx30.read_sensor()
 for x in range(0, 10):
      time.sleep(0.01)
      mx30.read_sensor()
-     print(mx30.ir)
+     
+print(mx30.ir)
